@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+        #chatbot {
+            width: 400px;
+            height: 300px;
+            border : 1px solid black;
+            margin: 0 auto;
+            padding : 10px;
+            overflow: auto;
+            text-align: left;
+        }
+        input {
+            margin-top: 10px;
+            padding: 8px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>chatbot</h1>
+    <div id="chatbot">
+       
+       
+    </div>
+    <input type="text" id = "input">
+    <button onclick="sendmessage()">send</button>
+
+    <script>
+        function sendmessage() {
+            let input = document.getElementById("input").value;
+            if (!input) return ;
+            addmessage("you " + input);
+            document.getElementById("input").value = "";
+            let response = getresponse(input);
+            addmessage("bot" + response);
+        }
+        function addmessage(message) {
+            let chatbox = document.getElementById("chatbot");
+            chatbox.innerHTML += message +  "<br><br>";
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+        function getresponse(input) {
+            if (input.includes("hello")) return "hi hello";
+            else if (input.includes("your name")) return "lab bot";
+            else return "sorry i dont speak chinese";
+        }
+    </script>
+</body>
+</html>
